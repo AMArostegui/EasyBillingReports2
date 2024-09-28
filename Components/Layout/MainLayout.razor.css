@@ -13,6 +13,17 @@
 .middle-row {
     background-color: red;
     height: 50vh;
+    display: flex;
+}
+
+.middle-row-left {
+    background-color: deepskyblue;
+    width: 60vw;
+}
+
+.middle-row-right {
+    background-color: white;
+    width: 40vw;
 }
 
 .bottom-row {
