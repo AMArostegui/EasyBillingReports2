@@ -11,17 +11,17 @@
         'left left left right-bottom right-bottom right-bottom';
 }
 
-.item2 {
+.item1{
     grid-area: left;
     background-color: yellow;
 }
 
-.item3 {
+.item2 {
     grid-area: right-top;
     background-color: blue;
 }
 
-.item4 {
+.item3 {
     grid-area: right-bottom;
     background-color: green;
 }
