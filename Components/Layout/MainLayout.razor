@@ -1,6 +1,8 @@
 ﻿@using EasyBillingReports2.Components.Pages
 @inherits LayoutComponentBase
 
+<RadzenComponents @rendermode="InteractiveServer" />
+
 <div class="page">
     <div class="top-row">
         <ProjectSelection></ProjectSelection>
@@ -8,7 +10,8 @@
 
     <div class="middle-row">
         <div class="middle-row-left">
-            <WorkPeriods></WorkPeriods>
+            <p>Middle left</p>
+            @* <WorkPeriods></WorkPeriods> *@
         </div>
         <div class="middle-row-right">
             <p>Middle right</p>
