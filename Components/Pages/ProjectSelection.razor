@@ -1,11 +1,8 @@
 ﻿<FluentSelect TOption="Project"
-              Id="people-listbox"
+              Id="project-listbox"
+              Items="_projects"
+              OptionText="@(p => p.Name)"
               Width="200px"
               Height="250px"
               Placeholder="Select a project/customer..." />
 
-@code
-{
-    Project SelectedProject;
-    string SelectedValue;
-}
