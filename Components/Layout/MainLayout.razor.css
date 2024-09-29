@@ -7,7 +7,7 @@
 
 .top-row {
     /*background-color: yellow;*/
-    height: 10vh;
+    height: 5vh;
 }
 
 .middle-row {
@@ -28,5 +28,5 @@
 
 .bottom-row {
     background-color: green;
-    height: 40vh;
+    height: 45vh;
 }

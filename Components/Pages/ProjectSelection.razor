@@ -1,12 +1,12 @@
-﻿<FluentStack Style="background-color: red; height: 100%" VerticalAlignment="VerticalAlignment.Center">
+﻿<FluentStack Style="background-color: lightgray; height: 100%; padding-left: 20px; padding-right: 20px "
+    VerticalAlignment="VerticalAlignment.Center">
     <FluentSelect TOption="Project"
-                    Id="project-listbox"
-                    Items="_projects"
-                    OptionText="@(p => p.Name)"
-                    Width="200px"
-                    Height="250px"
-                    Placeholder="Select a project/customer..." />
-    
+        Id="project-listbox"
+        Items="_projects"
+        OptionText="@(p => p.Name)"
+        Width="200px"
+        Height="250px"
+        Placeholder="Select a project/customer..." />    
 
     <FluentStack HorizontalAlignment="HorizontalAlignment.Right">
         <FluentButton>Prev</FluentButton>
