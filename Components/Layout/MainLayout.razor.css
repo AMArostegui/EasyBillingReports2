@@ -1,27 +1,27 @@
-﻿.page {
-    background-color: aqua;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.top-row {
-    background-color: yellow;
+﻿.header {
     height: 60px;
 }
 
-.middle-row {
-    background-color: red;
-    height: 100vh;
-    display: flex;
+.grid-container {
+    height: calc(100vh - 60px);
+    display: grid;
+    grid-template-areas:
+        'left left left right-top right-top right-top'
+        'left left left right-top right-top right-top'
+        'left left left right-bottom right-bottom right-bottom';
 }
 
-.middle-row-left {
-    background-color: deepskyblue;
-    width: 60vw;
+.item2 {
+    grid-area: left;
+    background-color: yellow;
 }
 
-.middle-row-right {
-    background-color: white;
-    width: 40vw;
+.item3 {
+    grid-area: right-top;
+    background-color: blue;
+}
+
+.item4 {
+    grid-area: right-bottom;
+    background-color: green;
 }
