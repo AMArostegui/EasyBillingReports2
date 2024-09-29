@@ -1,13 +1,13 @@
 ﻿.page {
-    background-color: aqua;
+    /*background-color: aqua;*/
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 .top-row {
-    background-color: yellow;
-    height: 30vh;
+    /*background-color: yellow;*/
+    height: 10vh;
 }
 
 .middle-row {
@@ -28,5 +28,5 @@
 
 .bottom-row {
     background-color: green;
-    height: 20vh;
+    height: 40vh;
 }
