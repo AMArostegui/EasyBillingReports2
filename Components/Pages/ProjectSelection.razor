@@ -1,5 +1,20 @@
-﻿<h3>ProjectSelection</h3>
+﻿@using Microsoft.FluentUI.AspNetCore.Components;
 
-@code {
+<FluentSelect TOption="Project"
+              Label="Select a person"
+              Id="people-listbox"
+              Width="200px"
+              Height="250px"
+              Placeholder="Make a selection..."
+ />
 
+<p>
+    Selected value: @SelectedValue <br />
+    Selected person (strongly typed): @SelectedPerson?.ToString()
+</p>
+
+@code
+{
+    Project SelectedPerson;
+    string SelectedValue;
 }
