@@ -1,8 +1,15 @@
-﻿<FluentSelect TOption="Project"
-              Id="project-listbox"
-              Items="_projects"
-              OptionText="@(p => p.Name)"
-              Width="200px"
-              Height="250px"
-              Placeholder="Select a project/customer..." />
+﻿<FluentStack>
+    <FluentSelect TOption="Project"
+                    Id="project-listbox"
+                    Items="_projects"
+                    OptionText="@(p => p.Name)"
+                    Width="200px"
+                    Height="250px"
+                    Placeholder="Select a project/customer..." />
+    
 
+    <FluentStack HorizontalAlignment="HorizontalAlignment.Right">
+        <FluentButton>Prev</FluentButton>
+        <FluentButton>Next</FluentButton>
+    </FluentStack>
+</FluentStack>
