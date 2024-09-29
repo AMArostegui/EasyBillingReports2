@@ -1,18 +1,18 @@
 ﻿.page {
-    /*background-color: aqua;*/
+    background-color: aqua;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 .top-row {
-    /*background-color: yellow;*/
+    background-color: yellow;
     height: 60px;
 }
 
 .middle-row {
     background-color: red;
-    height: 50vh;
+    height: 100vh;
     display: flex;
 }
 
@@ -24,9 +24,4 @@
 .middle-row-right {
     background-color: white;
     width: 40vw;
-}
-
-.bottom-row {
-    background-color: green;
-    height: 45vh;
 }
