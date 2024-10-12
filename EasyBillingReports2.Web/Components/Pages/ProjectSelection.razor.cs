@@ -1,4 +1,4 @@
-namespace EasyBillingReports2.Components.Pages
+namespace EasyBillingReports2.Web.Components.Pages
 {
     public partial class ProjectSelection
     {

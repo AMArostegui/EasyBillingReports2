@@ -1,4 +1,4 @@
-using EasyBillingReports2.Components;
+using EasyBillingReports2.Web.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Radzen;
 
