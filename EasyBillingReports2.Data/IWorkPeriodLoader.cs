@@ -2,5 +2,8 @@
 {
     public interface IWorkPeriodLoader
     {
+        void Load();
+
+        List<WorkPeriod> WorkPeriods { get; }
     }
 }
