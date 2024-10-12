@@ -7,7 +7,7 @@ namespace EasyBillingReports2.Web.Components.Pages
     public partial class WorkPeriods
     {
         RadzenScheduler<WorkPeriod> _scheduler;
-        Dictionary<DateTime, string> _events = new();
+        //Dictionary<DateTime, string> _events = new();
         IList<WorkPeriod> _workPeriods;
 
         protected override void OnInitialized()
@@ -37,6 +37,7 @@ namespace EasyBillingReports2.Web.Components.Pages
 
         private async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
         {
+            Console.WriteLine("JAremo2");
         }
 
         private void OnAppointmentRender(SchedulerAppointmentRenderEventArgs<WorkPeriod> args)

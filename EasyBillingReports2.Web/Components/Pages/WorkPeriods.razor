@@ -1,12 +1,11 @@
-﻿@using EasyBillingReports2.Data
+﻿@rendermode InteractiveServer
+@using EasyBillingReports2.Data
 @inject IWorkPeriodLoader Wpl
 
 <RadzenScheduler @ref=@_scheduler SlotRender=@OnSlotRender style="height: calc(100vh - 110px);"
     TItem="WorkPeriod" Data=@_workPeriods StartProperty="Start" EndProperty="End"
     TextProperty="Text" SelectedIndex="2"
-    SlotSelect=@OnSlotSelect
-    AppointmentSelect=@OnAppointmentSelect AppointmentRender=@OnAppointmentRender
-    AppointmentMove=@OnAppointmentMove >
+    AppointmentSelect=@OnAppointmentSelect>
     <RadzenDayView />
     <RadzenWeekView />
     <RadzenMonthView />

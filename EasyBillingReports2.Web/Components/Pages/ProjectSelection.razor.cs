@@ -10,5 +10,13 @@ namespace EasyBillingReports2.Web.Components.Pages
             base.OnInitialized();
             _projects = [new Project() { Name = "Arexdata" }, new Project() { Name = "IQVisio" }];
         }
+
+        public void OnPrevButtonClicked()
+        {
+        }
+
+        public void OnNextButtonClicked()
+        {
+        }
     }
 }
