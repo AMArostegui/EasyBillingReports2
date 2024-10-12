@@ -1,9 +1,7 @@
 ﻿using EasyBillingReports2.Data.Interfaces;
-using System.Globalization;
+using LibGit2Sharp;
 using System.Net;
 using System.Web;
-using Ical.Net;
-using LibGit2Sharp;
 
 namespace EasyBillingReports2.Data
 {
