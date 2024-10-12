@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyBillingReports2", "EasyBillingReports2.csproj", "{2374F191-0D10-468D-84C4-305BC6EB7E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyBillingReports2", "EasyBillingReports2.Web\EasyBillingReports2.csproj", "{2374F191-0D10-468D-84C4-305BC6EB7E49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyBillingReports2.Data", "EasyBillingReports2.Data\EasyBillingReports2.Data.csproj", "{539B14E8-6A7F-4CD3-9C6B-BE644739665E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyBillingReports2.BusinessLogic", "EasyBillingReports2.BusinessLogic\EasyBillingReports2.BusinessLogic.csproj", "{BB0F645C-EA3E-47CC-9CB2-EE40DDD1D3F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2374F191-0D10-468D-84C4-305BC6EB7E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2374F191-0D10-468D-84C4-305BC6EB7E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2374F191-0D10-468D-84C4-305BC6EB7E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{539B14E8-6A7F-4CD3-9C6B-BE644739665E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{539B14E8-6A7F-4CD3-9C6B-BE644739665E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{539B14E8-6A7F-4CD3-9C6B-BE644739665E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{539B14E8-6A7F-4CD3-9C6B-BE644739665E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0F645C-EA3E-47CC-9CB2-EE40DDD1D3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0F645C-EA3E-47CC-9CB2-EE40DDD1D3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0F645C-EA3E-47CC-9CB2-EE40DDD1D3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0F645C-EA3E-47CC-9CB2-EE40DDD1D3F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
