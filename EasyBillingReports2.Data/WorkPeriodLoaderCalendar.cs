@@ -24,6 +24,22 @@ namespace EasyBillingReports2.Data
                 new WorkPeriod { Start = DateTime.Today.AddHours(14), End = DateTime.Today.AddHours(14).AddMinutes(30), Text = "Dentist appointment" },
                 new WorkPeriod { Start = DateTime.Today.AddDays(1), End = DateTime.Today.AddDays(12), Text = "Vacation" },
             };
+
+            var random = new Random();
+            foreach (var wk in _workPeriods)
+            {
+                for (var i = 0; i < random.Next(0, 10); i++)
+                {
+                    var activity = new Activity()
+                    {
+                        Start = wk.Start,
+                        End = wk.End,
+                        Name = "Test"
+                    };
+
+                    wk.Activities.Add(activity);
+                }                
+            }
         }
     }
 }
