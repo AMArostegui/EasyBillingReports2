@@ -33,6 +33,7 @@ namespace EasyBillingReports2.Data
             _workPeriods = new List<WorkPeriod>();
 
             var repo = new Repository(_settings.Repo);
+            var repoCommits = repo.Commits.ToList();
 
             foreach (var evnt in calendar.Events)
             {
@@ -41,11 +42,10 @@ namespace EasyBillingReports2.Data
                     Start = evnt.Start.Value,
                     End = evnt.End.Value,
                     Text = evnt.Summary
-                };                
+                };
 
-                var commits = repo.Commits
-                    .Where(x => x.Committer.When >= period.Start && x.Committer.When <= period.End)
-                    .ToList();
+                var commits = repoCommits
+                    .Where(x => x.Committer.When >= period.Start && x.Committer.When <= period.End);
 
                 foreach (var commit in commits)
                 {
