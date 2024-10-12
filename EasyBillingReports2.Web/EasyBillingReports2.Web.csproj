@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.*-*" />
     <PackageReference Include="Radzen.Blazor" Version="5.2.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyBillingReports2.Data\EasyBillingReports2.Data.csproj" />
+  </ItemGroup>
 </Project>
