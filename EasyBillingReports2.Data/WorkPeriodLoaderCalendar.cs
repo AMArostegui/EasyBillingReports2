@@ -49,7 +49,8 @@ namespace EasyBillingReports2.Data
                 {
                     var activity = new Activity()
                     {
-                        Name = commit.MessageShort
+                        Name = commit.MessageShort,
+                        Dt = commit.Committer.When.DateTime
                     };
 
                     period.Activities.Add(activity);                
