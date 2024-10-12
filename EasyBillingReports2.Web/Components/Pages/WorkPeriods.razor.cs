@@ -17,7 +17,7 @@ namespace EasyBillingReports2.Web.Components.Pages
 
         private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
         {
-            Navigation.NavigateTo("period/20");            
+            Navigation.NavigateTo("activities/20");            
         }
     }
 }
