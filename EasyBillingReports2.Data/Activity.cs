@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return $"{Start} to {End}: {Name}";
+            return $"{Start.ToShortTimeString()} to {End.ToShortTimeString()}: {Name}";
         }
     }
 }
