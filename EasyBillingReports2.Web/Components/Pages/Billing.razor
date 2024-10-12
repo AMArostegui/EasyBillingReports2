@@ -1,4 +1,8 @@
-﻿<div style="padding-top: 10px; padding-right: 20px">
+﻿@using EasyBillingReports2.Data
+@inject IWorkPeriodLoader Wpl
+@inject EasyBillingReports2.BusinessLogic.Billing Bll
+
+<div style="padding-top: 10px; padding-right: 20px">
     <RadzenStack Style="background-color: lightgray"
                  Orientation="Radzen.Orientation.Horizontal" AlignItems="AlignItems.End" JustifyContent="Radzen.JustifyContent.End"
                  Gap="6rem" class="rz-p-0">
@@ -8,9 +12,3 @@
     </RadzenStack>
 </div>
 
-@code
-{
-    private int _eurHour = 30;
-    private int _hours = 30;
-    private int _total = 457;
-}
