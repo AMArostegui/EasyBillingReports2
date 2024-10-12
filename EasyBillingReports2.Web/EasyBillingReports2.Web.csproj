@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyBillingReports2.BusinessLogic\EasyBillingReports2.BusinessLogic.csproj" />
     <ProjectReference Include="..\EasyBillingReports2.Data\EasyBillingReports2.Data.csproj" />
   </ItemGroup>
 </Project>

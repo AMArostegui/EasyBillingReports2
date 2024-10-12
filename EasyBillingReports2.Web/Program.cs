@@ -1,3 +1,4 @@
+using EasyBillingReports2.BusinessLogic;
 using EasyBillingReports2.Data;
 using EasyBillingReports2.Data.Interfaces;
 using EasyBillingReports2.Web.Components;
@@ -18,6 +19,7 @@ namespace EasyBillingReports2.Web
 
             builder.Services.AddSingleton<IProjectSettings, ProjectSettingsCalendar>();
             builder.Services.AddSingleton<IWorkPeriodLoader, WorkPeriodLoaderCalendar>();
+            builder.Services.AddSingleton<Billing>();
 
             var app = builder.Build();
 

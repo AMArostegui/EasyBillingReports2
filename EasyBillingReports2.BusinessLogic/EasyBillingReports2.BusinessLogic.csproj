@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EasyBillingReports2.Data\EasyBillingReports2.Data.csproj" />
+  </ItemGroup>
+
 </Project>
