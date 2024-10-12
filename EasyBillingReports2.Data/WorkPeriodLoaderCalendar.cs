@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Web;
 using Ical.Net;
+using LibGit2Sharp;
 
 namespace EasyBillingReports2.Data
 {
@@ -30,6 +31,9 @@ namespace EasyBillingReports2.Data
 
             var calendar = Ical.Net.Calendar.Load(calendarTxt);
             _workPeriods = new List<WorkPeriod>();
+
+            var repo = new Repository(_settings.Repo);
+
             foreach (var evnt in calendar.Events)
             {
                 var period = new WorkPeriod()
@@ -37,26 +41,24 @@ namespace EasyBillingReports2.Data
                     Start = evnt.Start.Value,
                     End = evnt.End.Value,
                     Text = evnt.Summary
-                };
+                };                
+
+                var commits = repo.Commits
+                    .Where(x => x.Committer.When >= period.Start && x.Committer.When <= period.End)
+                    .ToList();
+
+                foreach (var commit in commits)
+                {
+                    var activity = new Activity()
+                    {
+                        Name = commit.MessageShort
+                    };
+
+                    period.Activities.Add(activity);                
+                }
 
                 _workPeriods.Add(period);
             }
-
-            //var random = new Random();
-            //foreach (var wk in _workPeriods)
-            //{
-            //    for (var i = 0; i < random.Next(0, 10); i++)
-            //    {
-            //        var activity = new Activity()
-            //        {
-            //            Start = wk.Start,
-            //            End = wk.End,
-            //            Name = "Test"
-            //        };
-
-            //        wk.Activities.Add(activity);
-            //    }                
-            //}
         }
     }
 }

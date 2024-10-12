@@ -17,6 +17,7 @@ namespace EasyBillingReports2.Data
         }
 
         public string Url { get; set; }
+        public string Repo { get; set; }
         public List<string> Tags { get; set; }
         public int AmountPerHour { get; set; }
 
@@ -35,6 +36,7 @@ namespace EasyBillingReports2.Data
         public void Copy(ProjectSettingsCalendar settings)
         {
             Url = settings.Url;
+            Repo = settings.Repo;
             Tags = settings.Tags.ToList();
             AmountPerHour = settings.AmountPerHour;
         }
