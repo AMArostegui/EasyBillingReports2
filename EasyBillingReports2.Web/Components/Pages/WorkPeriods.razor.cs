@@ -13,10 +13,10 @@ namespace EasyBillingReports2.Web.Components.Pages
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _workPeriods = WrkPrds.WorkPeriods;
+            _workPeriods = Wpl.WorkPeriods;
         }
 
-        void OnSlotRender(SchedulerSlotRenderEventArgs args)
+        private void OnSlotRender(SchedulerSlotRenderEventArgs args)
         {
             // Highlight today in month view
             if (args.View.Text == "Month" && args.Start.Date == DateTime.Today)
@@ -31,15 +31,15 @@ namespace EasyBillingReports2.Web.Components.Pages
             }
         }
 
-        async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+        private async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
         {
         }
 
-        async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
+        private async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
         {
         }
 
-        void OnAppointmentRender(SchedulerAppointmentRenderEventArgs<WorkPeriod> args)
+        private void OnAppointmentRender(SchedulerAppointmentRenderEventArgs<WorkPeriod> args)
         {
             // Never call StateHasChanged in AppointmentRender - would lead to infinite loop
 
@@ -49,7 +49,7 @@ namespace EasyBillingReports2.Web.Components.Pages
             }
         }
 
-        async Task OnAppointmentMove(SchedulerAppointmentMoveEventArgs args)
+        private async Task OnAppointmentMove(SchedulerAppointmentMoveEventArgs args)
         {
             var draggedAppointment = _workPeriods.FirstOrDefault(x => x == args.Appointment.Data);
 

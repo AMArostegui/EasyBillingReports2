@@ -1,6 +1,5 @@
 ﻿@using EasyBillingReports2.Data
-@inject Radzen.DialogService DialogService
-@inject IWorkPeriodLoader WrkPrds
+@inject IWorkPeriodLoader Wpl
 
 <RadzenScheduler @ref=@_scheduler SlotRender=@OnSlotRender style="height: calc(100vh - 110px);"
     TItem="WorkPeriod" Data=@_workPeriods StartProperty="Start" EndProperty="End"
@@ -12,4 +11,3 @@
     <RadzenWeekView />
     <RadzenMonthView />
 </RadzenScheduler>
-
