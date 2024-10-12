@@ -1,6 +1,5 @@
 using EasyBillingReports2.Data;
 using EasyBillingReports2.Web.Components;
-using Microsoft.FluentUI.AspNetCore.Components;
 using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddFluentUIComponents();
 builder.Services.AddRadzenComponents();
 
 builder.Services.AddSingleton<IWorkPeriodLoader, WorkPeriodLoaderCalendar>();
