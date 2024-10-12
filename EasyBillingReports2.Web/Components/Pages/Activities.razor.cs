@@ -1,6 +1,4 @@
-using EasyBillingReports2.Data;
 using Microsoft.AspNetCore.Components;
-
 
 namespace EasyBillingReports2.Web.Components.Pages
 {
@@ -10,7 +8,7 @@ namespace EasyBillingReports2.Web.Components.Pages
         private List<string> _activities = new();
 
         [Parameter]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -22,14 +20,18 @@ namespace EasyBillingReports2.Web.Components.Pages
             // populate parameter Id. I'll debug more in the future with more time
             // So, for now, extract from navigator object
             var parameters = Navigator.Uri.Split("/");
-            var lastParam = parameters.Last();
-            if (int.TryParse(lastParam, out int periodId))
+            if (parameters.Length <= 0)
             {
-                for (int i = 0; i < periodId; i++)
-                {
-                    _activities.Add($"Jaremore {i}");
-                }
+                return;
             }
+
+            var lastParam = parameters.Last();
+            if (!Guid.TryParse(lastParam, out var guid))
+            {
+                return;
+            }
+
+            Id = guid;
         }
     }
 }
