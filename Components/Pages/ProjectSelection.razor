@@ -4,12 +4,11 @@
         Id="project-listbox"
         Items="_projects"
         OptionText="@(p => p.Name)"
-        Width="200px"
-        Height="250px"
+        Width="400px"
         Placeholder="Select a project/customer..." />    
 
     <FluentStack HorizontalAlignment="HorizontalAlignment.Right">
-        <FluentButton>Prev</FluentButton>
-        <FluentButton>Next</FluentButton>
+        <RadzenButton ButtonStyle="ButtonStyle.Light"> &lt; Prev</RadzenButton>
+        <RadzenButton ButtonStyle="ButtonStyle.Light">Next &gt; </RadzenButton>
     </FluentStack>
 </FluentStack>
