@@ -3,10 +3,11 @@ namespace EasyBillingReports2.Data
 {
     public class WorkPeriodLoaderCalendar : IWorkPeriodLoader
     {
+        private readonly IProjectSettings _settings;
         private List<WorkPeriod> _workPeriods = new();
 
-        public WorkPeriodLoaderCalendar()
-        {
+        public WorkPeriodLoaderCalendar(IProjectSettings settings)
+        {            
             Load();
         }
 
