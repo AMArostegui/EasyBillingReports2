@@ -1,5 +1,8 @@
-﻿
-using EasyBillingReports2.Data.Interfaces;
+﻿using EasyBillingReports2.Data.Interfaces;
+using System.Globalization;
+using System.Net;
+using System.Web;
+using Ical.Net;
 
 namespace EasyBillingReports2.Data
 {
@@ -10,6 +13,7 @@ namespace EasyBillingReports2.Data
 
         public WorkPeriodLoaderCalendar(IProjectSettings settings)
         {            
+            _settings = settings;
             Load();
         }
 
@@ -17,32 +21,42 @@ namespace EasyBillingReports2.Data
 
         public void Load()
         {
-            _workPeriods = new List<WorkPeriod>()
-            {
-                new WorkPeriod { Start = DateTime.Today.AddDays(-2), End = DateTime.Today.AddDays(-2), Text = "Birthday" },
-                new WorkPeriod { Start = DateTime.Today.AddDays(-11), End = DateTime.Today.AddDays(-10), Text = "Day off" },
-                new WorkPeriod { Start = DateTime.Today.AddDays(-10), End = DateTime.Today.AddDays(-8), Text = "Work from home" },
-                new WorkPeriod { Start = DateTime.Today.AddHours(10), End = DateTime.Today.AddHours(12), Text = "Online meeting" },
-                new WorkPeriod { Start = DateTime.Today.AddHours(10), End = DateTime.Today.AddHours(13), Text = "Skype call" },
-                new WorkPeriod { Start = DateTime.Today.AddHours(14), End = DateTime.Today.AddHours(14).AddMinutes(30), Text = "Dentist appointment" },
-                new WorkPeriod { Start = DateTime.Today.AddDays(1), End = DateTime.Today.AddDays(12), Text = "Vacation" },
-            };
+            var urlDecoded = HttpUtility.UrlDecode(_settings.Url);
 
-            var random = new Random();
-            foreach (var wk in _workPeriods)
+            var client = new WebClient();            
+            using var ms = new MemoryStream(client.DownloadData(urlDecoded));
+            using var reader = new StreamReader(ms);
+            var calendarTxt = reader.ReadToEnd();
+
+            var calendar = Ical.Net.Calendar.Load(calendarTxt);
+            _workPeriods = new List<WorkPeriod>();
+            foreach (var evnt in calendar.Events)
             {
-                for (var i = 0; i < random.Next(0, 10); i++)
+                var period = new WorkPeriod()
                 {
-                    var activity = new Activity()
-                    {
-                        Start = wk.Start,
-                        End = wk.End,
-                        Name = "Test"
-                    };
+                    Start = evnt.Start.Value,
+                    End = evnt.End.Value,
+                    Text = evnt.Summary
+                };
 
-                    wk.Activities.Add(activity);
-                }                
+                _workPeriods.Add(period);
             }
+
+            //var random = new Random();
+            //foreach (var wk in _workPeriods)
+            //{
+            //    for (var i = 0; i < random.Next(0, 10); i++)
+            //    {
+            //        var activity = new Activity()
+            //        {
+            //            Start = wk.Start,
+            //            End = wk.End,
+            //            Name = "Test"
+            //        };
+
+            //        wk.Activities.Add(activity);
+            //    }                
+            //}
         }
     }
 }

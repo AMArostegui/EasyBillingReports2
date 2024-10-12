@@ -1,14 +1,19 @@
-﻿using System.Diagnostics;
+﻿using EasyBillingReports2.Data.Interfaces;
+using System.Reflection;
 using System.Text.Json;
-using EasyBillingReports2.Data.Interfaces;
 
 namespace EasyBillingReports2.Data
 {
     public class ProjectSettingsCalendar : IProjectSettings
     {
+        private static bool _isLoaded = false;
+
         public ProjectSettingsCalendar()
         {
-            Load();
+            if (!_isLoaded)
+            {
+                Load();
+            }            
         }
 
         public string Url { get; set; }
@@ -17,20 +22,13 @@ namespace EasyBillingReports2.Data
 
         public void Load()
         {
-            var sep = Path.DirectorySeparatorChar;
-            var basePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var path = $"{basePath}{sep}EasyBillingReports2{sep}";            
-            var fullFileName = $"{path}IQVisio.settings.json";
-            if (!File.Exists(fullFileName))
-            {
-                Debug.Assert(false);
-                Directory.CreateDirectory(fullFileName);                
-                var json = JsonSerializer.Serialize<ProjectSettingsCalendar>(this);
-                File.WriteAllText(fullFileName, json);
-                return;
-            }
+            var assembly = Assembly.GetExecutingAssembly();
+            var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.IQVisio.settings.json");
+            var reader = new StreamReader(stream);
+            var json = reader.ReadToEnd();
 
-            var settings = JsonSerializer.Deserialize<ProjectSettingsCalendar>(fullFileName);
+            _isLoaded = true;
+            var settings = JsonSerializer.Deserialize<ProjectSettingsCalendar>(json);
             Copy(settings);
         }
 
