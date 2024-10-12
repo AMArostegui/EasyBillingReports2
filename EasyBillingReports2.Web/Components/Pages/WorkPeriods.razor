@@ -1,6 +1,7 @@
 ﻿@rendermode InteractiveServer
 @using EasyBillingReports2.Data
 @inject IWorkPeriodLoader Wpl
+@inject NavigationManager Navigation
 
 <RadzenScheduler @ref=@_scheduler style="height: calc(100vh - 110px);"
     TItem="WorkPeriod" Data=@_workPeriods StartProperty="Start" EndProperty="End"

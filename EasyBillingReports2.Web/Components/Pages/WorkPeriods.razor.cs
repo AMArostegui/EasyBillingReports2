@@ -7,7 +7,6 @@ namespace EasyBillingReports2.Web.Components.Pages
     public partial class WorkPeriods
     {
         RadzenScheduler<WorkPeriod> _scheduler;
-        //Dictionary<DateTime, string> _events = new();
         IList<WorkPeriod> _workPeriods;
 
         protected override void OnInitialized()
@@ -18,6 +17,7 @@ namespace EasyBillingReports2.Web.Components.Pages
 
         private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
         {
+            Navigation.NavigateTo("period/20");            
         }
     }
 }
