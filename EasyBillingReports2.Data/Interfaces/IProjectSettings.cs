@@ -1,4 +1,4 @@
-﻿namespace EasyBillingReports2.Data
+﻿namespace EasyBillingReports2.Data.Interfaces
 {
     public interface IProjectSettings
     {

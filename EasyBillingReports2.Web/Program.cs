@@ -1,4 +1,5 @@
 using EasyBillingReports2.Data;
+using EasyBillingReports2.Data.Interfaces;
 using EasyBillingReports2.Web.Components;
 using Radzen;
 

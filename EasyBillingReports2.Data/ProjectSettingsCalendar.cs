@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+using EasyBillingReports2.Data.Interfaces;
 
 namespace EasyBillingReports2.Data
 {

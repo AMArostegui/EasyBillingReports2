@@ -1,4 +1,6 @@
 ﻿
+using EasyBillingReports2.Data.Interfaces;
+
 namespace EasyBillingReports2.Data
 {
     public class WorkPeriodLoaderCalendar : IWorkPeriodLoader
