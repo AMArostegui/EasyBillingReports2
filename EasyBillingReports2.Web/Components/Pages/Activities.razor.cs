@@ -32,6 +32,16 @@ namespace EasyBillingReports2.Web.Components.Pages
             }
 
             Id = guid;
+            var period = Wpl.WorkPeriods.FirstOrDefault(x => x.Id == Id);
+            if (period == null)
+            {
+                return;
+            }
+
+            foreach (var activity in period.Activities)
+            {
+                _activities.Add(activity.ToString());                
+            }
         }
     }
 }
