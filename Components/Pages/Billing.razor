@@ -2,8 +2,15 @@
     <RadzenStack Style="background-color: lightgray"
                  Orientation="Radzen.Orientation.Horizontal" AlignItems="AlignItems.End" JustifyContent="Radzen.JustifyContent.End"
                  Gap="6rem" class="rz-p-0">
-        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>€/Hour: </strong>30</RadzenText>
-        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>Hours: </strong>50</RadzenText>
-        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>Total: </strong>457€</RadzenText>        
+        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>€/Hour: </strong>@_eurHour</RadzenText>
+        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>Hours: </strong>@_hours</RadzenText>
+        <RadzenText TextStyle="TextStyle.H5" TextAlign="TextAlign.Right"><strong>Total: </strong>@_total€</RadzenText>        
     </RadzenStack>
 </div>
+
+@code
+{
+    private int _eurHour = 30;
+    private int _hours = 30;
+    private int _total = 457;
+}
