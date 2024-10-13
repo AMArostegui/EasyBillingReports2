@@ -12,10 +12,8 @@ namespace EasyBillingReports2.Web.Components.Fragments
         }
 
         private void OnSelectedItemChanged()
-        {
-            //var project = Services.GetRequiredService<Project>();
-            //project.Selected = _selProject.ToEnum();
-
+        {            
+            Prj.Selected = _selProject.ToEnum();
         }
 
         public void OnPrevButtonClicked()
