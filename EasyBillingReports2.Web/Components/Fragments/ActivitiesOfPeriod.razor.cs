@@ -7,9 +7,6 @@ namespace EasyBillingReports2.Web.Components.Fragments
         private string _value = "";
         private List<string> _activities = new();
 
-        [Parameter]
-        public Guid Id { get; set; }
-
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
@@ -31,8 +28,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
                 return;
             }
 
-            Id = guid;
-            var period = Wpl.WorkPeriods.FirstOrDefault(x => x.Id == Id);
+            var period = Wpl.WorkPeriods.FirstOrDefault(x => x.Id == guid);
             if (period == null)
             {
                 return;
