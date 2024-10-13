@@ -31,10 +31,8 @@
 {
     [Parameter]
     public int Year { get; set; }
-
     [Parameter]
     public int Month { get; set; }
-
     [Parameter]
     public int Period { get; set; }
 
@@ -46,31 +44,8 @@
     {
         base.OnInitialized();
 
-        _periodId = Guid.Empty;
-
-        var now = DateTime.Now;
-        _year = now.Year;
-        _month = now.Month;
-
-        // For the life of me, I'm unable to get the framework to
-        // populate parameter Id. I'll debug more in the future with more time
-        // For now, extract parameters directly from the Url
-        var builder = new UriBuilder(Navigator.Uri);
-        var path = builder.Path;
-        var parameters = path
-            .Split("/")
-            .Where(x => !string.IsNullOrEmpty(x))
-            .ToList();
-        if (parameters.Count <= 1)
-        {
-            return;
-        }
-
-        _year = int.Parse(parameters[0]);
-        _month = int.Parse(parameters[1]);        
-        if (parameters.Count >= 3)
-        {
-            _periodId = Guid.Parse(parameters[2]);
-        }
+        var dt = Utils.ParseUrl(Navigator.Uri, out _periodId);
+        _year = dt.Year;
+        _month = dt.Month;
     }
 }

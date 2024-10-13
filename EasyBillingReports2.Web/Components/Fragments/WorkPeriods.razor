@@ -3,6 +3,21 @@
 @inject IWorkPeriodLoader Wpl
 @inject NavigationManager Navigation
 
+@*  
+    TODO: handle native scheduler controls is getting hard
+    I'd rather hide and use my own. Using centralized styles would be better, though
+*@
+
+<style>
+     .rz-scheduler-nav-views {
+        display: none;
+    }
+
+    .rz-scheduler-nav-prev-next {
+        display: none;
+    } 
+</style>
+
 <RadzenScheduler @ref=@_scheduler style="height: calc(100vh - 110px);"
     TItem="WorkPeriod" Data=@_workPeriods StartProperty="Start" EndProperty="End"
     TextProperty="Text" SelectedIndex="2"

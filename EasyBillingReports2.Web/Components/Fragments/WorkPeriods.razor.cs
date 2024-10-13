@@ -8,7 +8,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
     public partial class WorkPeriods
     {
         RadzenScheduler<WorkPeriod> _scheduler;
-        IList<WorkPeriod> _workPeriods;
+        private List<WorkPeriod> _workPeriods;
 
         [Parameter]
         public int Month { get; set; }
@@ -18,7 +18,14 @@ namespace EasyBillingReports2.Web.Components.Fragments
         protected override void OnInitialized()
         {
             base.OnInitialized();
+
             _workPeriods = Wpl.WorkPeriods;
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            _scheduler.CurrentDate = new DateTime(Year, Month, 1);
         }
 
         private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
