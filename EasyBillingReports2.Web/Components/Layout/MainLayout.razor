@@ -1,6 +1,7 @@
 ﻿@page "/"
-@page "/activities"
-@page "/activities/{Id:Guid}"
+@page "/{Year:int}/{Month:int}"
+@page "/{Year:int}/{Month:int}/{Period:guid}"
+
 @using EasyBillingReports2.Web.Components.Fragments
 @inherits LayoutComponentBase
 
@@ -16,22 +17,36 @@
             <WorkPeriods></WorkPeriods>
         </div>
         <div class="middle-row-right">
-            <ActivitiesOfPeriod></ActivitiesOfPeriod>
+            <ActivitiesOfPeriod PeriodId="@_periodId"></ActivitiesOfPeriod>
         </div>       
     </div>
 
     <div class="bottom-row">
-        <BillingTotals></BillingTotals>
+        <BillingTotals Month="@_month" Year="@_year"></BillingTotals>
     </div>
 </div>
 
 @code
 {
     [Parameter]
-    public Guid Id { get; set; }
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Month { get; set; }
+
+    [Parameter]
+    public int Period { get; set; }
+
+    private int _year;
+    private int _month;
+    private Guid _periodId;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
+
+        _year = 2024;
+        _month = 8;
+        _periodId = Guid.NewGuid();
     }
 }

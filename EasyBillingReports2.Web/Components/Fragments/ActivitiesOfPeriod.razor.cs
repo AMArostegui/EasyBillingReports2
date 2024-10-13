@@ -7,6 +7,9 @@ namespace EasyBillingReports2.Web.Components.Fragments
         private string _value = "";
         private List<string> _activities = new();
 
+        [Parameter]
+        public Guid PeriodId {get; set;}
+
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
