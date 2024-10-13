@@ -1,6 +1,3 @@
-using EasyBillingReports2.Data;
-using EasyBillingReports2.Data.Interfaces;
-
 namespace EasyBillingReports2.Web.Components.Fragments
 {
     public partial class ProjectSelection
@@ -11,11 +8,14 @@ namespace EasyBillingReports2.Web.Components.Fragments
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _projects = [ "Arexdata", "IQVisio" ];
+            _projects = [ ProjectLst.Arexdata.ToDesc(), ProjectLst.IQVisio.ToDesc() ];
         }
 
         private void OnSelectedItemChanged()
         {
+            //var project = Services.GetRequiredService<Project>();
+            //project.Selected = _selProject.ToEnum();
+
         }
 
         public void OnPrevButtonClicked()

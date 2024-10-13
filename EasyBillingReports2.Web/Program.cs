@@ -27,8 +27,8 @@ namespace EasyBillingReports2.Web
                 var project = serviceProvider.GetService<Project>();
                 return project.Selected switch
                 {
-                    Project.Projects.Arexdata => serviceProvider.GetRequiredService<SettingsGitHub>(),
-                    Project.Projects.IQVisio => serviceProvider.GetRequiredService<SettingsICalLocRepo>(),
+                    ProjectLst.Arexdata => serviceProvider.GetRequiredService<SettingsGitHub>(),
+                    ProjectLst.IQVisio => serviceProvider.GetRequiredService<SettingsICalLocRepo>(),
                     _ => throw new NotImplementedException()
                 };
             });
@@ -40,8 +40,8 @@ namespace EasyBillingReports2.Web
                 var project = serviceProvider.GetService<Project>();
                 return project.Selected switch
                 {
-                    Project.Projects.Arexdata => serviceProvider.GetRequiredService<PeriodLoaderGitHub>(),
-                    Project.Projects.IQVisio => serviceProvider.GetRequiredService<PeriodLoaderICalLocRepo>(),
+                    ProjectLst.Arexdata => serviceProvider.GetRequiredService<PeriodLoaderGitHub>(),
+                    ProjectLst.IQVisio => serviceProvider.GetRequiredService<PeriodLoaderICalLocRepo>(),
                     _ => throw new NotImplementedException()
                 };
             });
