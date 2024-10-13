@@ -5,12 +5,12 @@ using System.Web;
 
 namespace EasyBillingReports2.Data
 {
-    public class PeriodLoaderCalendar : IWorkPeriodLoader
+    public class PeriodLoaderICalLocRepo : IPeriodLoader
     {
-        private readonly IProjectSettings _settings;
+        private readonly ISettings _settings;
         private List<Period> _workPeriods = new();
 
-        public PeriodLoaderCalendar(IProjectSettings settings)
+        public PeriodLoaderICalLocRepo(ISettings settings)
         {            
             _settings = settings;
             Load();

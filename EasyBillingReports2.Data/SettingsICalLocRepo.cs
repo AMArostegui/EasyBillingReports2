@@ -4,11 +4,11 @@ using System.Text.Json;
 
 namespace EasyBillingReports2.Data
 {
-    public class ProjectSettingsCalendar : IProjectSettings
+    public class SettingsICalLocRepo : ISettings
     {
         private static bool _isLoaded = false;
 
-        public ProjectSettingsCalendar()
+        public SettingsICalLocRepo()
         {
             if (!_isLoaded)
             {
@@ -29,11 +29,11 @@ namespace EasyBillingReports2.Data
             var json = reader.ReadToEnd();
 
             _isLoaded = true;
-            var settings = JsonSerializer.Deserialize<ProjectSettingsCalendar>(json);
+            var settings = JsonSerializer.Deserialize<SettingsICalLocRepo>(json);
             Copy(settings);
         }
 
-        public void Copy(ProjectSettingsCalendar settings)
+        public void Copy(SettingsICalLocRepo settings)
         {
             Url = settings.Url;
             Repo = settings.Repo;

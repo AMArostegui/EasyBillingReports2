@@ -1,4 +1,4 @@
 ﻿@using EasyBillingReports2.Data
-@inject IWorkPeriodLoader Wpl
+@inject IPeriodLoader Wpl
 
 <RadzenListBox @bind-Value=@_value Data=@_activities Style="width:40vw; height: calc(100vh - 110px);" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "select company" }})" />

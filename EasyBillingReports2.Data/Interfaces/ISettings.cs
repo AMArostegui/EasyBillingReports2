@@ -1,6 +1,6 @@
 ﻿namespace EasyBillingReports2.Data.Interfaces
 {
-    public interface IProjectSettings
+    public interface ISettings
     {
         string Url { get; set; }
         string Repo { get; set; }

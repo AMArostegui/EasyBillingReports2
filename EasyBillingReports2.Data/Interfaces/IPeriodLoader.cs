@@ -1,6 +1,6 @@
 ﻿namespace EasyBillingReports2.Data
 {
-    public interface IWorkPeriodLoader
+    public interface IPeriodLoader
     {
         void Load();
 

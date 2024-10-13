@@ -5,10 +5,10 @@ namespace EasyBillingReports2.BusinessLogic
 {
     public class Billing
     {
-        private readonly IProjectSettings _settings;
-        private readonly IWorkPeriodLoader _loader;
+        private readonly ISettings _settings;
+        private readonly IPeriodLoader _loader;
 
-        public Billing(IProjectSettings settings, IWorkPeriodLoader loader)
+        public Billing(ISettings settings, IPeriodLoader loader)
         {
             _settings = settings;
             _loader = loader;
