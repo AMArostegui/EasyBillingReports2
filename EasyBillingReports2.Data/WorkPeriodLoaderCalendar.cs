@@ -56,6 +56,7 @@ namespace EasyBillingReports2.Data
                     period.Activities.Add(activity);                
                 }
 
+                period.Activities.Sort((x, y) => x.Dt.CompareTo(y.Dt));
                 _workPeriods.Add(period);
             }
         }
