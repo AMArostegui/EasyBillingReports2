@@ -2,7 +2,12 @@
 {
     public class Project
     {
-        public string Name { get; set; }
-        public string Repo { get; set; }
+        public enum Projects
+        {
+            Arexdata,
+            IQVisio
+        }
+
+        public Projects Selected { get; set; } = Projects.IQVisio;
     }
 }

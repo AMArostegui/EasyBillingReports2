@@ -13,12 +13,39 @@ namespace EasyBillingReports2.Web
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddRazorComponents()
+            builder.Services
+                .AddRazorComponents()
                 .AddInteractiveServerComponents();
             builder.Services.AddRadzenComponents();
 
-            builder.Services.AddScoped<ISettings, SettingsICalLocRepo>();
-            builder.Services.AddScoped<IPeriodLoader, PeriodLoaderICalLocRepo>();
+            builder.Services.AddSingleton<Project>();
+
+            builder.Services.AddScoped<SettingsICalLocRepo>();
+            builder.Services.AddScoped<SettingsGitHub>();
+            builder.Services.AddScoped<ISettings>(serviceProvider =>
+            {
+                var project = serviceProvider.GetService<Project>();
+                return project.Selected switch
+                {
+                    Project.Projects.Arexdata => serviceProvider.GetRequiredService<SettingsGitHub>(),
+                    Project.Projects.IQVisio => serviceProvider.GetRequiredService<SettingsICalLocRepo>(),
+                    _ => throw new NotImplementedException()
+                };
+            });
+
+            builder.Services.AddScoped<PeriodLoaderICalLocRepo>();
+            builder.Services.AddScoped<PeriodLoaderGitHub>();
+            builder.Services.AddScoped<IPeriodLoader>(serviceProvider =>
+            {
+                var project = serviceProvider.GetService<Project>();
+                return project.Selected switch
+                {
+                    Project.Projects.Arexdata => serviceProvider.GetRequiredService<PeriodLoaderGitHub>(),
+                    Project.Projects.IQVisio => serviceProvider.GetRequiredService<PeriodLoaderICalLocRepo>(),
+                    _ => throw new NotImplementedException()
+                };
+            });
+
             builder.Services.AddScoped<Billing>();
 
             var app = builder.Build();
@@ -32,10 +59,8 @@ namespace EasyBillingReports2.Web
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
             app.UseAntiforgery();
-
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
 
