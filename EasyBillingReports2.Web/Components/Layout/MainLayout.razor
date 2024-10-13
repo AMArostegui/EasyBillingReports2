@@ -3,6 +3,7 @@
 @page "/{Year:int}/{Month:int}/{Period:guid}"
 
 @using EasyBillingReports2.Web.Components.Fragments
+@inject NavigationManager Navigator
 @inherits LayoutComponentBase
 
 <RadzenComponents @rendermode="InteractiveServer" />
@@ -45,8 +46,31 @@
     {
         base.OnInitialized();
 
-        _year = 2024;
-        _month = 8;
-        _periodId = Guid.NewGuid();
+        _periodId = Guid.Empty;
+
+        var now = DateTime.Now;
+        _year = now.Year;
+        _month = now.Month;
+
+        // For the life of me, I'm unable to get the framework to
+        // populate parameter Id. I'll debug more in the future with more time
+        // For now, extract parameters directly from the Url
+        var builder = new UriBuilder(Navigator.Uri);
+        var path = builder.Path;
+        var parameters = path
+            .Split("/")
+            .Where(x => !string.IsNullOrEmpty(x))
+            .ToList();
+        if (parameters.Count <= 1)
+        {
+            return;
+        }
+
+        _year = int.Parse(parameters[0]);
+        _month = int.Parse(parameters[1]);        
+        if (parameters.Count >= 3)
+        {
+            _periodId = Guid.Parse(parameters[2]);
+        }
     }
 }

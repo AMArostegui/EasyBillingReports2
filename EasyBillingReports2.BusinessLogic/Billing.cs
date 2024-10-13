@@ -14,7 +14,7 @@ namespace EasyBillingReports2.BusinessLogic
             _loader = loader;
         }
 
-        public void Calculate(DateTime month, out int amountPerHour, out int quarters, out int hours, out int total)
+        public void Calculate(DateTime month, out int amountPerHour, out int minutes, out int hours, out int total)
         {
             amountPerHour = _settings.AmountPerHour;
 
@@ -29,9 +29,11 @@ namespace EasyBillingReports2.BusinessLogic
 
             var seconds = ts.TotalSeconds;
             hours = ts.Hours;
+            minutes = (int)ts.TotalMinutes;
+
             var amountHours = amountPerHour * hours;
             var amountPerQuarter = amountPerHour / 4;
-            quarters = ts.Minutes / 15;
+            var quarters = ts.Minutes / 15;
             var amountQuarter = quarters * amountPerQuarter;
 
             total = amountHours + amountQuarter;
