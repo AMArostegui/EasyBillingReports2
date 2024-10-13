@@ -18,8 +18,8 @@ namespace EasyBillingReports2.Web.Components.Fragments
             base.OnInitialized();
 
             var dt = new DateTime(Year, Month, 1);
-            Bll.Calculate(dt, out _eurHour, out var minutes, out var hours, out int _total);
-            _hours = $"{hours}h{minutes}'";
+            Bll.Calculate(dt, out _eurHour, out var minutes, out var hours, out _total);
+            _hours = $"{hours}h{minutes}'";            
         }
     }
 }

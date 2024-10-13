@@ -24,16 +24,16 @@ namespace EasyBillingReports2.BusinessLogic
             foreach (var period in periods)
             {
                 var tsPeriod = period.End - period.Start;
-                ts.Add(tsPeriod);                
+                ts = ts.Add(tsPeriod);                
             }
-
-            var seconds = ts.TotalSeconds;
-            hours = ts.Hours;
+            
+            hours = (int)ts.TotalHours;
+            ts = ts.Add(-TimeSpan.FromHours(hours));
             minutes = (int)ts.TotalMinutes;
 
             var amountHours = amountPerHour * hours;
             var amountPerQuarter = amountPerHour / 4;
-            var quarters = ts.Minutes / 15;
+            var quarters = (int)ts.TotalMinutes / 15;
             var amountQuarter = quarters * amountPerQuarter;
 
             total = amountHours + amountQuarter;

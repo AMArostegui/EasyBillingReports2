@@ -39,7 +39,7 @@ namespace EasyBillingReports2.Data
                 {
                     Start = evnt.Start.Value,
                     End = evnt.End.Value,
-                    Text = evnt.Summary
+                    Text = $"{evnt.Start.Value.ToShortTimeString()} to {evnt.End.Value.ToShortTimeString()} {evnt.Summary}"
                 };
 
                 var commits = repoCommits
