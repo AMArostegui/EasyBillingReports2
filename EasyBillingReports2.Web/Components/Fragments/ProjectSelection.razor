@@ -3,7 +3,8 @@
 
 <RadzenStack Style="background-color: lightgray; height: 100%; padding-left: 20px; padding-right: 20px "
     Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Start">
-    <RadzenDropDown @bind-Value=@value Data=@companyNames Style="width: 100%; max-width: 400px;" Name="DropDownBindValue" />
+    <RadzenDropDown Name="DropDownBindValue" Style="width: 100%; max-width: 400px;"
+        @bind-Value=@_selProject Data=@_projects SelectedItemChanged="@OnSelectedItemChanged" />
     <RadzenStack Orientation="Radzen.Orientation.Horizontal" JustifyContent="Radzen.JustifyContent.Start">
         <RadzenButton ButtonStyle="ButtonStyle.Light" Click="@OnPrevButtonClicked"> &lt; Prev</RadzenButton>
         <RadzenButton ButtonStyle="ButtonStyle.Light" Click="@OnNextButtonClicked">Next &gt; </RadzenButton>

@@ -1,17 +1,21 @@
-using Radzen;
-using System;
+using EasyBillingReports2.Data;
+using EasyBillingReports2.Data.Interfaces;
 
 namespace EasyBillingReports2.Web.Components.Fragments
 {
     public partial class ProjectSelection
     {
-        string value = "Around the Horn";
-        IEnumerable<string> companyNames;
+        private string _selProject = "IQVisio";
+        private List<string> _projects;
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            companyNames = [ "Arexdata", "IQVisio" ];
+            _projects = [ "Arexdata", "IQVisio" ];
+        }
+
+        private void OnSelectedItemChanged()
+        {
         }
 
         public void OnPrevButtonClicked()
