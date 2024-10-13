@@ -8,7 +8,7 @@ namespace EasyBillingReports2.Data
     public class PeriodLoaderICalLocRepo : IPeriodLoader
     {
         private readonly ISettings _settings;
-        private List<Period> _workPeriods = new();
+        private static List<Period> _workPeriods = null;
 
         public PeriodLoaderICalLocRepo(ISettings settings)
         {            
@@ -20,6 +20,11 @@ namespace EasyBillingReports2.Data
 
         public void Load()
         {
+            if (_workPeriods != null)
+            {
+                return;
+            }
+
             var urlDecoded = HttpUtility.UrlDecode(_settings.Url);
 
             var client = new WebClient();            

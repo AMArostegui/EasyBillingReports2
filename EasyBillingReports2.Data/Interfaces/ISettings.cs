@@ -2,10 +2,10 @@
 {
     public interface ISettings
     {
-        string Url { get; set; }
-        string Repo { get; set; }
-        List<string> Tags { get; set; }
-        int AmountPerHour { get; set; }
+        string Url { get; }
+        string Repo { get; }
+        List<string> Tags { get; }
+        int AmountPerHour { get; }
 
         void Load();
     }
