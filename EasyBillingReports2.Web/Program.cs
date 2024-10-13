@@ -17,9 +17,9 @@ namespace EasyBillingReports2.Web
                 .AddInteractiveServerComponents();
             builder.Services.AddRadzenComponents();
 
-            builder.Services.AddSingleton<ISettings, SettingsICalLocRepo>();
-            builder.Services.AddSingleton<IPeriodLoader, PeriodLoaderICalLocRepo>();
-            builder.Services.AddSingleton<Billing>();
+            builder.Services.AddScoped<ISettings, SettingsICalLocRepo>();
+            builder.Services.AddScoped<IPeriodLoader, PeriodLoaderICalLocRepo>();
+            builder.Services.AddScoped<Billing>();
 
             var app = builder.Build();
 
