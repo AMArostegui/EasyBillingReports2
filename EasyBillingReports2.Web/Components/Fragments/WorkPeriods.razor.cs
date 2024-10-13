@@ -1,4 +1,5 @@
 using EasyBillingReports2.Data;
+using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
@@ -9,6 +10,11 @@ namespace EasyBillingReports2.Web.Components.Fragments
         RadzenScheduler<WorkPeriod> _scheduler;
         IList<WorkPeriod> _workPeriods;
 
+        [Parameter]
+        public int Month { get; set; }
+        [Parameter]
+        public int Year { get; set; }
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -18,7 +24,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
         private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
         {
             var guid = args.Data.Id;
-            //Navigation.NavigateTo($"activities/{guid}");
+            Navigation.NavigateTo($"{Year}/{Month}/{guid}");
         }
     }
 }
