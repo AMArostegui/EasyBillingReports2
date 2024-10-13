@@ -2,7 +2,7 @@ using EasyBillingReports2.Data;
 using Radzen;
 using Radzen.Blazor;
 
-namespace EasyBillingReports2.Web.Components.Pages
+namespace EasyBillingReports2.Web.Components.Fragments
 {
     public partial class WorkPeriods
     {

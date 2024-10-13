@@ -1,6 +1,6 @@
-namespace EasyBillingReports2.Web.Components.Pages
+namespace EasyBillingReports2.Web.Components.Fragments
 {
-    public partial class Billing
+    public partial class BillingTotals
     {
         private int _eurHour = 30;
         private int _hours = 30;

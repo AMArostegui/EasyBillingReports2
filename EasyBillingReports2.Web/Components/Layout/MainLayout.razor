@@ -1,7 +1,7 @@
 ﻿@page "/"
 @page "/activities"
 @page "/activities/{Id:Guid}"
-@using EasyBillingReports2.Web.Components.Pages
+@using EasyBillingReports2.Web.Components.Fragments
 @inherits LayoutComponentBase
 
 <RadzenComponents @rendermode="InteractiveServer" />
@@ -13,16 +13,14 @@
 
     <div class="middle-row">
         <div class="middle-row-left">
-            @* <p>Middle left</p> *@
             <WorkPeriods></WorkPeriods>
         </div>
         <div class="middle-row-right">
-            @* <p>Middle right</p> *@
-            <Activities></Activities>
+            <ActivitiesOfPeriod></ActivitiesOfPeriod>
         </div>       
     </div>
 
     <div class="bottom-row">
-        <Billing></Billing>
+        <BillingTotals></BillingTotals>
     </div>
 </div>

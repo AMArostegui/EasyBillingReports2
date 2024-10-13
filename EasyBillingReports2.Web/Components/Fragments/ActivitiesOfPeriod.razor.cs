@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Components;
 
-namespace EasyBillingReports2.Web.Components.Pages
+namespace EasyBillingReports2.Web.Components.Fragments
 {
-    public partial class Activities
+    public partial class ActivitiesOfPeriod
     {
         private string _value = "";
         private List<string> _activities = new();
