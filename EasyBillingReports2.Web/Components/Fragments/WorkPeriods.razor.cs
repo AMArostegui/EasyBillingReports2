@@ -7,8 +7,8 @@ namespace EasyBillingReports2.Web.Components.Fragments
 {
     public partial class WorkPeriods
     {
-        RadzenScheduler<WorkPeriod> _scheduler;
-        private List<WorkPeriod> _workPeriods;
+        RadzenScheduler<Period> _scheduler;
+        private List<Period> _workPeriods;
 
         [Parameter]
         public int Month { get; set; }
@@ -28,7 +28,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
             _scheduler.CurrentDate = new DateTime(Year, Month, 1);
         }
 
-        private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<WorkPeriod> args)
+        private void OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<Period> args)
         {
             var guid = args.Data.Id;
             Navigation.NavigateTo($"{Year}/{Month}/{guid}");

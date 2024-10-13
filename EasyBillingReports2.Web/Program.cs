@@ -18,7 +18,7 @@ namespace EasyBillingReports2.Web
             builder.Services.AddRadzenComponents();
 
             builder.Services.AddSingleton<IProjectSettings, ProjectSettingsCalendar>();
-            builder.Services.AddSingleton<IWorkPeriodLoader, WorkPeriodLoaderCalendar>();
+            builder.Services.AddSingleton<IWorkPeriodLoader, PeriodLoaderCalendar>();
             builder.Services.AddSingleton<Billing>();
 
             var app = builder.Build();

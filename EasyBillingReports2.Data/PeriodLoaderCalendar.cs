@@ -5,18 +5,18 @@ using System.Web;
 
 namespace EasyBillingReports2.Data
 {
-    public class WorkPeriodLoaderCalendar : IWorkPeriodLoader
+    public class PeriodLoaderCalendar : IWorkPeriodLoader
     {
         private readonly IProjectSettings _settings;
-        private List<WorkPeriod> _workPeriods = new();
+        private List<Period> _workPeriods = new();
 
-        public WorkPeriodLoaderCalendar(IProjectSettings settings)
+        public PeriodLoaderCalendar(IProjectSettings settings)
         {            
             _settings = settings;
             Load();
         }
 
-        public List<WorkPeriod> WorkPeriods => _workPeriods;
+        public List<Period> WorkPeriods => _workPeriods;
 
         public void Load()
         {
@@ -28,14 +28,14 @@ namespace EasyBillingReports2.Data
             var calendarTxt = reader.ReadToEnd();
 
             var calendar = Ical.Net.Calendar.Load(calendarTxt);
-            _workPeriods = new List<WorkPeriod>();
+            _workPeriods = new List<Period>();
 
             var repo = new Repository(_settings.Repo);
             var repoCommits = repo.Commits.ToList();
 
             foreach (var evnt in calendar.Events)
             {
-                var period = new WorkPeriod()
+                var period = new Period()
                 {
                     Start = evnt.Start.Value,
                     End = evnt.End.Value,

@@ -4,6 +4,6 @@
     {
         void Load();
 
-        List<WorkPeriod> WorkPeriods { get; }
+        List<Period> WorkPeriods { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EasyBillingReports2.Data
 {
-    public class WorkPeriod
+    public class Period
     {
         private List<Activity> _activities = new();
 
