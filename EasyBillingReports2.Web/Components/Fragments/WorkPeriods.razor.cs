@@ -8,7 +8,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
     public partial class WorkPeriods
     {
         RadzenScheduler<Period> _scheduler;
-        private List<Period> _workPeriods;
+        private List<Period> _workPeriods = new();
 
         [Parameter]
         public int Month { get; set; }
@@ -18,8 +18,8 @@ namespace EasyBillingReports2.Web.Components.Fragments
         protected override void OnInitialized()
         {
             base.OnInitialized();
-
-            _workPeriods = Wpl.WorkPeriods;
+            _workPeriods.Clear();
+            Wpl.WorkPeriods.ForEach(x => _workPeriods.Add(x));
         }
 
         protected override void OnAfterRender(bool firstRender)

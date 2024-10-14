@@ -19,6 +19,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
         private void OnSelectedItemChanged()
         {            
             Prj.Selected = _comboSelPrj.SelectedItem.ToString().ToEnum();
+            Navigator.Refresh(forceReload: true);
         }
 
         public void OnPrevButtonClicked()
