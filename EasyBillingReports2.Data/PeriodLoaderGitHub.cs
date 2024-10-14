@@ -47,15 +47,15 @@ namespace EasyBillingReports2.Data
                     {
                         Start = dt,
                         End = dt,
-                        Text = kvp.Key
+                        Text = $"{kvp.Key} {kvp.Count()} commits"
                     };
 
-                    foreach (var kvp2 in kvp)
+                    foreach (var commit in kvp)
                     {
                         var activity = new Activity()
                         {
-                            Name = kvp2.Commit.Message,
-                            Dt = kvp2.Commit.Author.Date.DateTime
+                            Name = commit.Commit.Message,
+                            Dt = commit.Commit.Author.Date.DateTime
                         };
 
                         period.Activities.Add(activity);
