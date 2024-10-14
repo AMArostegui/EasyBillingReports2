@@ -1,4 +1,5 @@
 ﻿using EasyBillingReports2.Data.Interfaces;
+using LibGit2Sharp;
 using Octokit;
 using System.Web;
 
@@ -36,15 +37,28 @@ namespace EasyBillingReports2.Data
                 var commits = await client.Repository.Commit.GetAll(owner, repo);
 
                 _workPeriods = new List<Period>();
-                foreach (var commit in commits)
+
+                var commitsByShortDate = commits.GroupBy(x => x.Commit.Author.Date.DateTime.ToShortDateString());
+                foreach (var kvp in commitsByShortDate)
                 {
-                    var dt = commit.Commit.Author.Date.DateTime;
+                    var dt = DateTime.Parse(kvp.Key);
                     var period = new Period()
                     {
                         Start = dt,
                         End = dt,
-                        Text = $"{dt.ToShortTimeString()} {commit.Commit.Message}"
+                        Text = kvp.Key
                     };
+
+                    foreach (var kvp2 in kvp)
+                    {
+                        var activity = new Activity()
+                        {
+                            Name = kvp2.Commit.Message,
+                            Dt = kvp2.Commit.Author.Date.DateTime
+                        };
+
+                        period.Activities.Add(activity);
+                    }
 
                     _workPeriods.Add(period);
                 }
