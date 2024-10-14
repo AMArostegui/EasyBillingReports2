@@ -18,12 +18,12 @@ namespace EasyBillingReports2.Data
             Load();
         }
 
-        public string Url { get; private set; }
-        public string Repo { get; private set; }
-        public List<string> Tags { get; private set; }
-        public int AmountPerHour { get; private set; }
+        public string Url { get; set; }
+        public string Repo { get; set; }
+        public List<string> Tags { get; set; }
+        public int AmountPerHour { get; set; }
 
-        public static SettingsICalLocRepo Load()
+        public void Load()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.Arexdata.settings.json");
@@ -31,7 +31,12 @@ namespace EasyBillingReports2.Data
             var json = reader.ReadToEnd();
 
             _loaded = true;
-            return JsonSerializer.Deserialize<SettingsICalLocRepo>(json);
+            var tmp = JsonSerializer.Deserialize<SettingsGitHub>(json);
+
+            Url = tmp.Url;
+            Repo = tmp.Repo;
+            Tags = tmp.Tags.ToList();
+            AmountPerHour = tmp.AmountPerHour;
         }
     }
 }
