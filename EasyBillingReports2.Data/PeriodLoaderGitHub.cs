@@ -18,7 +18,7 @@ namespace EasyBillingReports2.Data
 
         public List<Period> WorkPeriods => _workPeriods;
 
-        public async void Load()
+        public void Load()
         {
             if (_workPeriods != null)
             {
@@ -34,7 +34,8 @@ namespace EasyBillingReports2.Data
                 var owner = settingsGitHub.Owner;
                 var repo = _settings.Repo;
 
-                var commits = await client.Repository.Commit.GetAll(owner, repo);
+                // TODO: I know I should be awaiting, but time presses. To change in the future
+                var commits = client.Repository.Commit.GetAll(owner, repo).Result;
 
                 _workPeriods = new List<Period>();
 
@@ -60,6 +61,7 @@ namespace EasyBillingReports2.Data
                         period.Activities.Add(activity);
                     }
 
+                    period.Activities.Sort((x, y) => x.Dt.CompareTo(y.Dt));
                     _workPeriods.Add(period);
                 }
             }
