@@ -5,13 +5,15 @@ namespace EasyBillingReports2.Web.Components.Fragments
     public partial class ProjectSelection
     {
         private RadzenDropDown<string> _comboSelPrj;
-        private string _selProject = "IQVisio";
+        private string _selProject;
         private List<string> _projects;
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
+
             _projects = [ ProjectLst.Arexdata.ToDesc(), ProjectLst.IQVisio.ToDesc() ];
+            _selProject = Prj.Selected.ToDesc();
         }
 
         private void OnSelectedItemChanged()
