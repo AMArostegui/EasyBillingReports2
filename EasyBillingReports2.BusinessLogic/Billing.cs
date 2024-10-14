@@ -17,6 +17,14 @@ namespace EasyBillingReports2.BusinessLogic
         public void Calculate(DateTime month, out int amountPerHour, out int minutes, out int hours, out int total)
         {
             amountPerHour = _settings.AmountPerHour;
+            minutes = 0;
+            hours = 0;
+            total = 0;
+
+            if (_loader.WorkPeriods == null)
+            {
+                return;
+            }
 
             var ts = new TimeSpan();
             var periods = _loader.WorkPeriods.Where(x => x.Start.Month == month.Month && x.Start.Year == month.Year);

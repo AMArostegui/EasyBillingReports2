@@ -15,6 +15,10 @@ namespace EasyBillingReports2.Web.Components.Fragments
             await base.OnInitializedAsync();
 
             _activities.Clear();
+            if (Wpl.WorkPeriods == null)
+            {
+                return;
+            }
 
             var period = Wpl.WorkPeriods.FirstOrDefault(x => x.Id == PeriodId);
             if (period == null)
