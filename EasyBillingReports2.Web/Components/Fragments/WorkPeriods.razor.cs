@@ -18,8 +18,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _workPeriods.Clear();
-            Wpl.WorkPeriods.ForEach(x => _workPeriods.Add(x));
+            _workPeriods = Wpl.WorkPeriods;
         }
 
         protected override void OnAfterRender(bool firstRender)
