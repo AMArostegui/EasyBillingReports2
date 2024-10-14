@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Arexdata.settings.json" />
     <None Remove="IQVisio.settings.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Arexdata.settings.json" />
     <EmbeddedResource Include="IQVisio.settings.json" />
   </ItemGroup>
 

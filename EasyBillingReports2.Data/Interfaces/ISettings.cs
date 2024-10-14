@@ -6,7 +6,5 @@
         string Repo { get; }
         List<string> Tags { get; }
         int AmountPerHour { get; }
-
-        void Load();
     }
 }

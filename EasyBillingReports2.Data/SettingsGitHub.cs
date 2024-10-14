@@ -1,20 +1,37 @@
 ﻿using EasyBillingReports2.Data.Interfaces;
+using System.Reflection;
+using System.Text.Json;
 
 namespace EasyBillingReports2.Data
 {
     public class SettingsGitHub : ISettings
     {
-        public string Url => throw new NotImplementedException();
+        private static bool _loaded = false;
 
-        public string Repo => throw new NotImplementedException();
-
-        public List<string> Tags => throw new NotImplementedException();
-
-        public int AmountPerHour => throw new NotImplementedException();
-
-        public void Load()
+        public SettingsGitHub()
         {
-            throw new NotImplementedException();
+            if (_loaded)
+            {
+                return;
+            }
+
+            Load();
+        }
+
+        public string Url { get; private set; }
+        public string Repo { get; private set; }
+        public List<string> Tags { get; private set; }
+        public int AmountPerHour { get; private set; }
+
+        public static SettingsICalLocRepo Load()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.Arexdata.settings.json");
+            var reader = new StreamReader(stream);
+            var json = reader.ReadToEnd();
+
+            _loaded = true;
+            return JsonSerializer.Deserialize<SettingsICalLocRepo>(json);
         }
     }
 }

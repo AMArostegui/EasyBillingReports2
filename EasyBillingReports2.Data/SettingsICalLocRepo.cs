@@ -6,39 +6,32 @@ namespace EasyBillingReports2.Data
 {
     public class SettingsICalLocRepo : ISettings
     {
-        private class SettingsICalLocRepoFields
-        {
-            public string Url { get; set; }
-            public string Repo { get; set; }
-            public List<string> Tags { get; set; }
-            public int AmountPerHour { get; set; }
-        }
-
-        private static SettingsICalLocRepoFields _fields = null;
+        private static bool _loaded = false;
 
         public SettingsICalLocRepo()
         {
-            Load();
-        }
-
-        public string Url => _fields.Url;
-        public string Repo => _fields.Repo;
-        public List<string> Tags => _fields.Tags;
-        public int AmountPerHour => _fields.AmountPerHour;
-
-        public void Load()
-        {
-            if (_fields != null)
+            if (_loaded)
             {
                 return;
             }
 
+            Load();
+        }
+
+        public string Url { get; private set; }
+        public string Repo { get; private set; }
+        public List<string> Tags { get; private set; }
+        public int AmountPerHour { get; private set; }
+
+        public static SettingsICalLocRepo Load()
+        {
             var assembly = Assembly.GetExecutingAssembly();
             var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.IQVisio.settings.json");
             var reader = new StreamReader(stream);
             var json = reader.ReadToEnd();
 
-            _fields = JsonSerializer.Deserialize<SettingsICalLocRepoFields>(json);
+            _loaded = true;
+            return JsonSerializer.Deserialize<SettingsICalLocRepo>(json);
         }
     }
 }
