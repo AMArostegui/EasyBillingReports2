@@ -1,7 +1,10 @@
+using Radzen.Blazor;
+
 namespace EasyBillingReports2.Web.Components.Fragments
 {
     public partial class ProjectSelection
     {
+        private RadzenDropDown<string> _comboSelPrj;
         private string _selProject = "IQVisio";
         private List<string> _projects;
 
@@ -13,7 +16,7 @@ namespace EasyBillingReports2.Web.Components.Fragments
 
         private void OnSelectedItemChanged()
         {            
-            Prj.Selected = _selProject.ToEnum();
+            Prj.Selected = _comboSelPrj.SelectedItem.ToString().ToEnum();
         }
 
         public void OnPrevButtonClicked()

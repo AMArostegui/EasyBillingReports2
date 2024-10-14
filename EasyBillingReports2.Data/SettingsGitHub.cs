@@ -34,7 +34,7 @@ namespace EasyBillingReports2.Data
             }
 
             var assembly = Assembly.GetExecutingAssembly();
-            var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.IQVisio.settings.json");
+            var stream = assembly.GetManifestResourceStream("EasyBillingReports2.Data.Arexdata.settings.json");
             var reader = new StreamReader(stream);
             var json = reader.ReadToEnd();
 
